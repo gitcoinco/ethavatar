@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReactLoading from 'react-loading';
-import Blockies from 'react-blockies';
+import Blockies from 'react-blockies-image';
 
 var ipfsAPI = require('ipfs-api');
 
@@ -71,7 +71,7 @@ class EthAvatarImage extends Component {
       if(this.state.imageURL) {
         return(
           <div className="eth-avatar-image">
-            <img src={this.state.imageURL} style={{ width: size, height: size, border: '1px solid black' }} role="presentation" />
+            <Blockies seed={this.props.ethAddress} image={this.state.imageURL} size={size} border={size/(size/10)} />
             {this.state.title ? (<p>Title: {this.state.title}</p>):(<p></p>)}
           </div>
         );
