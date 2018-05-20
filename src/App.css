@@ -65,6 +65,7 @@ code {
   top: 32vh; /* 330 / (535 + 330 + 175) */
   bottom: 17vh; /* 175 / (535 + 330 + 175) */
   padding: 45px 20px;
+  border-radius: 7px;
 }
 
 .bg {
