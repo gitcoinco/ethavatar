@@ -5,7 +5,7 @@ import Header from './Header.js';
 
 export default () => (
   <div className="App">
-    <Background isBlurred={false}>
+    <Background isBlurred={true}>
       <Header selectedIndex={0} />
     </Background>
     <main className="container centered">
