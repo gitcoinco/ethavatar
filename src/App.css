@@ -8,26 +8,41 @@ body {
   padding: 32px 64px;
 }
 
-body,
-.pure-g [class*=pure-u] {
+body {
   font-family: 'Futura-Medium', 'Futura', sans-serif;
+  color: #fff;
 }
 
-h1, h2, h3 {
+h2, h3 {
   text-transform: uppercase;
 }
 
 h1 {
-  color: #F9006C;
+  position: fixed;
+  font-size: 6vh;
+  font-weight: 400;
+  width: 45vw; /* 652 / (1029 + 652 + 103) */
+  right: 0; /* 103 / (1029 + 652 + 103) */
+  top: 38vh; /* 400 / (400 + 404 + 236) */
+  bottom: 22vh; /* 236 / (400 + 404 + 236) */
+}
+
+h2 {
   font-size: 4vh;
+  color: #F9006C;
 }
 
 p {
   font-size: 3vh;
+  color: #444;
 }
 
 a {
   font-size: 3vh;
+}
+
+span.h1-5 {
+  font-size: 5vh;
 }
 
 code {
@@ -45,23 +60,11 @@ code {
   background: url('/images/container.png') no-repeat;
   background-color: #fff;
   background-size: contain;
-  width: 41vw; /* 788 / (103 + 788 + 1029) */
+  width: 40vw; /* 788 / (103 + 788 + 1029) */
   left: 5vw; /* 103 / (103 + 788 + 1020) */
   top: 32vh; /* 330 / (535 + 330 + 175) */
   bottom: 17vh; /* 175 / (535 + 330 + 175) */
   padding: 45px 20px;
-}
-
-.pure-button-primary {
-  background-color: #0c1a2b;
-}
-
-.pure-button-primary:hover {
-  background-color: #233e5e;
-}
-
-.pure-form input[type="text"]:focus {
-  border-color: #0c1a2b;
 }
 
 .bg {
@@ -87,6 +90,15 @@ code {
   height: auto;
 }
 
+.made-with-gitcoin {
+  position: absolute;
+  z-index: 2;
+  max-width: 20vw;
+  height: auto;
+  right: 25vw;
+  bottom: 10vh;
+}
+
 /* TEXT */
 .futura {
   font-family: 'Futura-Medium', 'Futura', sans-serif;
@@ -94,39 +106,6 @@ code {
 
 .centered {
   text-align: center;
-}
-
-/* NAVBAR */
-
-.navbar {
-  position: fixed;
-  padding: 5px;
-  background: #0c1a2b;
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
-}
-
-.navbar a {
-  color: #fff;
-}
-
-.navbar a:active,
-.navbar a:focus,
-.navbar a:hover {
-  background: #233e5e;
-}
-
-.navbar .pure-menu-heading {
-  font-weight: bold;
-  text-transform: none;
-}
-
-.navbar .navbar-right {
-  float: right;
-}
-
-.navbar .uport-logo {
-  height: 16px;
-  margin-right: 10px;
 }
 
 /* HEADER */
@@ -137,6 +116,7 @@ header {
   z-index: 2;
 }
 
+/* NAVBAR */
 nav {
   display: flex;
   flex-flow: row wrap;
@@ -145,10 +125,9 @@ nav {
 
 nav div {
   cursor: pointer;
-  color: #fff;
   font-size: 26px;
   text-transform: uppercase;
-  font-weight: medium;
+  font-weight: 400;
   margin: 24px 24px 0;
 }
 
