@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import EthAvatarContract from '../build/contracts/EthAvatar.json';
-import getWeb3 from './utils/getWeb3';
+import { getWeb3 } from './utils/getWeb3';
 
 import Container from './components/Container.js';
 import EthAvatarImage from './components/EthAvatarImage.js';
@@ -24,12 +24,12 @@ class App extends Component {
     };
   }
 
-  componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
+  async componentWillMount() {
+    try {
+      // Get network provider and web3 instance.
+      // See utils/getWeb3 for more info.
+      const results = await getWeb3();
 
-    getWeb3
-    .then(results => {
       this.setState({
         web3: results.web3,
         ethAddress: results.web3.eth.coinbase
@@ -37,13 +37,13 @@ class App extends Component {
 
       // Instantiate contract once web3 provided.
       this.instantiateContract();
-    })
-    .catch(() => {
+    }
+    catch (err) {
       this.setState({
         web3: null
       });
-      console.log('Error finding web3.');
-    });
+      console.error('Error finding web3.');
+    }
   }
 
   instantiateContract() {
@@ -52,16 +52,17 @@ class App extends Component {
     ethAvatar.setProvider(this.state.web3.currentProvider);
 
     // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      ethAvatar.deployed().then((instance) => {
-        var ethAvatarInstance = instance;
+    this.state.web3.eth.getAccounts(async (error, accounts) => {
+      try {
+        const instance = await ethAvatar.deployed();
+        const ethAvatarInstance = instance;
 
         this.setState({
-          ethAvatarInstance: ethAvatarInstance
+          ethAvatarInstance,
         });
 
         // watch the DidSetIPFSHash event
-        var didSetIPFSHashEvent = ethAvatarInstance.DidSetIPFSHash();
+        const didSetIPFSHashEvent = ethAvatarInstance.DidSetIPFSHash();
         didSetIPFSHashEvent.watch((error, result) => {
             if(!error)
             {
@@ -73,11 +74,14 @@ class App extends Component {
         );
 
         // use ethAvatarInstance to retreive the hash of the current account
-        return ethAvatarInstance.getIPFSHash.call(this.state.ethAddress);
-      }).then((result) => {
+        const result = await ethAvatarInstance.getIPFSHash.call(this.state.ethAddress);
+
         // Update state with the result.
-        return this.setState({ ethAvatarIPFSHash: result });
-      });
+        this.setState({ ethAvatarIPFSHash: result });
+      }
+      catch (err) {
+        console.error(err);
+      }
     });
   }
 
@@ -123,7 +127,6 @@ class App extends Component {
         <h2>Loading EthAvatar...</h2>
       </Container>
     );
-
   }
 }
 
