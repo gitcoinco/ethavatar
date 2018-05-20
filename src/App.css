@@ -1,20 +1,33 @@
 /* PAGE */
 
 html {
-  width: 100%;
-  height: 100%;
-  background: url('/images/bg.png') no-repeat;
   background-color: #1132B9;
-  background-size: cover;
+}
+
+body {
+  padding: 32px 64px;
 }
 
 body,
 .pure-g [class*=pure-u] {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Futura-Medium', 'Futura', sans-serif;
 }
 
 h1, h2, h3 {
-  font-family: 'Oswald', 'Arial Narrow', sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  color: #F9006C;
+  font-size: 4vh;
+}
+
+p {
+  font-size: 3vh;
+}
+
+a {
+  font-size: 3vh;
 }
 
 code {
@@ -27,7 +40,15 @@ code {
 
 .container {
   box-sizing: border-box;
-  width: 100%;
+  position: absolute;
+  z-index: 2;
+  background: url('/images/container.png') no-repeat;
+  background-color: #fff;
+  background-size: contain;
+  width: 41vw; /* 788 / (103 + 788 + 1029) */
+  left: 5vw; /* 103 / (103 + 788 + 1020) */
+  top: 32vh; /* 330 / (535 + 330 + 175) */
+  bottom: 17vh; /* 175 / (535 + 330 + 175) */
   padding: 45px 20px;
 }
 
@@ -41,6 +62,38 @@ code {
 
 .pure-form input[type="text"]:focus {
   border-color: #0c1a2b;
+}
+
+.bg {
+  position: fixed;
+  z-index: 1;
+  top: -42px;
+  left: -74px;
+  right: -74px;
+  bottom: -42px;
+  padding: 72px calc(74px + 5vw);
+  background: url('/images/bg.png') no-repeat;
+  background-size: cover;
+}
+
+.blurred {
+  filter: blur(10px);
+}
+
+.circle {
+  position: fixed;
+  top: 120px;
+  max-width: 70vh;
+  height: auto;
+}
+
+/* TEXT */
+.futura {
+  font-family: 'Futura-Medium', 'Futura', sans-serif;
+}
+
+.centered {
+  text-align: center;
 }
 
 /* NAVBAR */
@@ -74,4 +127,32 @@ code {
 .navbar .uport-logo {
   height: 16px;
   margin-right: 10px;
+}
+
+/* HEADER */
+header {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+nav {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+nav div {
+  cursor: pointer;
+  color: #fff;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: medium;
+  margin: 24px 24px 0;
+}
+
+nav div.selected {
+  color: #0FCE7C;
+  border-bottom: 4px solid #0FCE7C;
 }

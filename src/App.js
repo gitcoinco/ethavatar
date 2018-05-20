@@ -4,6 +4,7 @@ import getWeb3 from './utils/getWeb3';
 
 import EthAvatarImage from './components/EthAvatarImage.js';
 import EthAvatarForm from './components/EthAvatarForm.js';
+import NoWeb3 from './components/NoWeb3.js';
 
 import './css/oswald.css';
 import './css/open-sans.css';
@@ -83,12 +84,7 @@ class App extends Component {
     if(this.state.web3 === null) {
       return(
         // Display a web3 warning.
-        <div className="App">
-            <main className="container">
-              <h1>⚠️</h1>
-              <p>This browser has no connection to the Ethereum network. Please use the Chrome/FireFox extension MetaMask, or dedicated Ethereum browsers Mist or Parity.</p>
-            </main>
-        </div>
+        <NoWeb3 />
       );
     }
 
