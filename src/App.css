@@ -75,6 +75,9 @@ code {
   padding: 72px calc(74px + 5vw);
   background: url('/images/bg.png') no-repeat;
   background-size: cover;
+  filter: blur(0px);
+  transition-property: filter;
+  transition-duration: 2s;
 }
 
 .blurred {
