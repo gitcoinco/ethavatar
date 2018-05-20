@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+
 import EthAvatarContract from '../build/contracts/EthAvatar.json';
 import getWeb3 from './utils/getWeb3';
 
+import Container from './components/Container.js';
 import EthAvatarImage from './components/EthAvatarImage.js';
 import EthAvatarForm from './components/EthAvatarForm.js';
-import NoWeb3 from './components/NoWeb3.js';
 
 import './css/oswald.css';
 import './css/open-sans.css';
@@ -84,46 +85,43 @@ class App extends Component {
     if(this.state.web3 === null) {
       return(
         // Display a web3 warning.
-        <NoWeb3 />
+        <Container isBlurred={true} isCentered={true}>
+          <h2>No Connection To The Ethereum Network</h2>
+          <p>Browse this website with:</p>
+          <p>MetaMask / Parity / Mist</p>
+          <a href="/help">Need Help?</a>
+        </Container>
       );
     }
 
     if(this.state.ethAddress === null) {
       return(
         // Display a web3 warning.
-        <div className="App">
-            <main className="container">
-              <h1>⚠️</h1>
-              <p>MetaMask seems to be locked.</p>
-            </main>
-        </div>
+        <Container isBlurred={true} isCentered={true}>
+          <h2>MetaMask seems to be locked.</h2>
+          <p>Unlock MetaMask needs to be unlocked to continue.</p>
+        </Container>
       );
     }
 
     if(this.state.ethAvatarIPFSHash !== undefined) {
       return (
-        <div className="App">
-          <main className="container">
-            <h1>Welcome to Eth Avatar!</h1>
-            <h2>Current Ethereum Address: </h2><h3><code>{this.state.ethAddress}</code></h3>
-            <h2>Associated Avatar: </h2>
+        <Container>
+          <h4>Your ETH Address:</h4>
+          <h3>{this.state.ethAddress}</h3>
+          <div className="blue-stripe">
             <EthAvatarImage ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} ipfsHash={this.state.ethAvatarIPFSHash} />
-            <br />
-            <hr />
-            <h1>Upload New Avatar</h1>
-            <EthAvatarForm ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} />
-          </main>
-        </div>
+            {/* <EthAvatarForm ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} /> */}
+          </div>
+        </Container>
       );
     }
 
     return(
       // Display a loading indicator.
-      <div className="App">
-        <main className="container">
-          <h1>Loading EthAvatar...</h1>
-        </main>
-      </div>
+      <Container isCentered={true}>
+        <h2>Loading EthAvatar...</h2>
+      </Container>
     );
 
   }

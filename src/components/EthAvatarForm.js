@@ -121,7 +121,7 @@ class EthAvatarForm extends Component {
       return(
         <div className="eth-avatar-form">
           <div className="avatar-image-cropper" style={{ width: '250px', height: '250px', border: '1px solid black' }}>
-              <AvatarImageCropper apply={this.handleApplyCropper} text='Upload Avatar' />
+            <AvatarImageCropper apply={this.handleApplyCropper} text='Upload Avatar' />
           </div>
           <div className="avatar-preview">
             <h3>Preview</h3>

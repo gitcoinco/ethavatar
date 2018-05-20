@@ -8,7 +8,7 @@ const menuItems = [
   'Help',
 ]
 
-export default ({selectedIndex}) => (
+export default ({ selectedIndex }) => (
   <nav>
     {menuItems.map((item, i) => (
       <div key={`nav-${item.toLowerCase()}`} className={classnames({

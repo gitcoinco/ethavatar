@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-export default ({isBlurred = false, children}) => (
+export default ({ isBlurred = false, children }) => (
   <div className={classnames({
     bg: true,
     blurred: isBlurred,
