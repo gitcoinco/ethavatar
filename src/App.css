@@ -351,3 +351,8 @@ article h2 {
   height: 32vh;
   border: none;
 }
+
+.identicon {
+  width: 32vh !important;
+  height: 32vh !important;
+}
