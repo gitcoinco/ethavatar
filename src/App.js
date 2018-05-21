@@ -109,7 +109,9 @@ class App extends Component {
           <h2>No Connection To The Ethereum Network</h2>
           <p>Browse this website with:</p>
           <p>MetaMask / Parity / Mist</p>
-          <a href="/help">Need Help?</a>
+          <p>
+            <a href="#" onClick={this.handleNavigation(3)}>Need Help ?</a>
+          </p>
         </Container>
       );
     }
@@ -124,9 +126,9 @@ class App extends Component {
           handleNavigation={this.handleNavigation}
         >
           <h2>No Connection To The Ethereum Network</h2>
+          <p>Browse this website with:</p>
+          <p>MetaMask / Parity / Mist</p>
           <p>
-            Browse this website with:<br />
-            Metamask   /   Parity   /    Mist<br />
             <a href="#" onClick={this.handleNavigation(3)}>Need Help ?</a>
           </p>
         </Container>
