@@ -25,13 +25,13 @@ h1 {
 
 h2 {
   font-size: 4vh;
-  color: #F9006C;
+  color: #f9006c;
   text-transform: uppercase;
 }
 
 h3 {
   font-size: 3vh;
-  color: #3F00FF;
+  color: #3f00ff;
   margin: 0;
   font-weight: 100;
   word-break: break-all;
@@ -64,6 +64,21 @@ code {
   margin: 20px 0 15px 0;
   padding: 10px;
   background: #eee;
+}
+
+button {
+  min-width: 12vw;
+  max-height: fit-content;
+  background: #f9006c;
+  border-radius: 2px;
+  font-size: 2vh;
+  font-weight: 100;
+  letter-spacing: 2px;
+  color: #fff;
+  text-align: center;
+  padding: 19px;
+  border: none;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
 }
 
 .pointer {
@@ -185,9 +200,13 @@ nav a.selected {
 }
 
 .blue-stripe {
+  display: flex;
+  flex-direction: row;
   margin: 3vh -3vw;
   padding: 0 3vw;
   background-color: #3f00ff;
+  justify-content: space-around;
+  align-items: center;
 }
 
 /* PANEL */

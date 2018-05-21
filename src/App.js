@@ -143,6 +143,7 @@ class App extends Component {
           <div className="blue-stripe">
             <EthAvatarImage ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} ipfsHash={this.state.ethAvatarIPFSHash} />
             {/* <EthAvatarForm ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} /> */}
+            <button>Change</button>
           </div>
         </Container>
       );
