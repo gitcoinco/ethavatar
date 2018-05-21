@@ -9,12 +9,52 @@ const isPresent = selectedIndex => selectedIndex !== null && selectedIndex !== u
 
 let lastSelectedIndex;
 
+const Dapp = ({icon, link, alt}) => (
+  <a href={link} className="dapp">
+    <img src={icon} alt={alt} width="70" height="70" />
+  </a>
+)
+
 const panels = (handleNavigation) => [
   <div>
     Avatar Lookup
   </div>,
   <div>
-    What Is It
+    <header>
+      <h4>What Is It</h4>
+      <h4 className="pointer" onClick={handleNavigation()}>Back</h4>
+    </header>
+    <div className="about-section">
+      <div>
+        <img src="/images/gitcoin_badge.png" width="172" height="182" alt="Made With GitCoin" />
+      </div>
+      <div>
+        <p>
+          EthAvatar associates an avatar of your choice with an Ethereum address that you own.
+        </p>
+        <p>
+          We hope this project will be a "gravatar for ethereum addresses".
+        </p>
+      </div>
+    </div>
+    <div className="dapps">
+      <Dapp link="#tmp" icon="/images/tmp.png" alt="tmp" />
+      <Dapp link="#tmp" icon="/images/tmp.png" alt="tmp" />
+      <Dapp link="#tmp" icon="/images/tmp.png" alt="tmp" />
+      <Dapp link="#tmp" icon="/images/tmp.png" alt="tmp" />
+      <Dapp link="#tmp" icon="/images/tmp.png" alt="tmp" />
+    </div>
+    <div>
+      <h2>Sales point one</h2>
+      <p>
+        Nori grape silver beet broccoli kombu beet greens fava bean
+        quandong celery. Bunya nuts black-eyed pea prairie turnip.
+      </p>
+      <h2>Sales point two</h2>
+      <p>
+        Nori grape silver beet broccoli kombu beet greens fava
+      </p>
+    </div>
   </div>,
   <div>
     Use It In Your DApp
