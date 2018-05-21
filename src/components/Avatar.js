@@ -246,13 +246,13 @@ class Avatar extends Component {
       if (!this.state.uploadStarted) {
         return (
           <div className="blue-stripe">
-            <div className="avatar-image-cropper">
-              <AvatarImageCropper apply={this.handleApplyCropper} text="Drag Here" icon={<img src="/images/upload.png" width="149" height="127" alt="Drag Here" />} />
-            </div>
-            {/* <div className="avatar-preview">
-              <h3>Preview</h3>
+            {this.state.selectedImageURL ?
               <img src={this.state.selectedImageURL} role="presentation" />
-            </div> */}
+            :
+              <div className="avatar-image-cropper">
+                <AvatarImageCropper apply={this.handleApplyCropper} text="Drag Here" icon={<img src="/images/upload.png" width="149" height="127" alt="Drag Here" />} />
+              </div>
+            }
             <form className="form-messages" onSubmit={this.handleSubmit}>
               <input type="submit" value="Send" />
             </form>
