@@ -38,8 +38,9 @@ export default class Accordion extends Component {
     else {
       this.accordion.style.height = this.state.height + 'px';
       this.accordion.addEventListener('transitionend', () => {
-        this.accordion.removeEventListener('transitionend', arguments.callee);
         this.accordion.style.height = null;
+      }, {
+        once: true
       });
     }
   }

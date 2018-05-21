@@ -4,8 +4,7 @@ import EthAvatarContract from '../build/contracts/EthAvatar.json';
 import { getWeb3 } from './utils/getWeb3';
 
 import Container from './components/Container.js';
-import EthAvatarImage from './components/EthAvatarImage.js';
-import EthAvatarForm from './components/EthAvatarForm.js';
+import Avatar from './components/Avatar.js';
 
 import './css/oswald.css';
 import './css/open-sans.css';
@@ -140,11 +139,11 @@ class App extends Component {
         >
           <h4>Your ETH Address:</h4>
           <h3>{this.state.ethAddress}</h3>
-          <div className="blue-stripe">
-            <EthAvatarImage ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} ipfsHash={this.state.ethAvatarIPFSHash} />
-            {/* <EthAvatarForm ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} /> */}
-            <button>Change</button>
-          </div>
+          <Avatar
+            ethAvatarInstance={this.state.ethAvatarInstance}
+            ethAddress={this.state.ethAddress}
+            ipfsHash={this.state.ethAvatarIPFSHash}
+          />
         </Container>
       );
     }
