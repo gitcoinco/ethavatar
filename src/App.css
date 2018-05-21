@@ -66,6 +66,10 @@ code {
   background: #eee;
 }
 
+.pointer {
+  cursor: pointer;
+}
+
 .bg {
   position: fixed;
   z-index: 1;
@@ -167,6 +171,12 @@ nav a.selected {
   bottom: 15vh; /* 175 / (535 + 330 + 175) */
   padding: 3vw; /* 73 / 1920 */
   border-radius: 7px;
+  transition-property: left;
+  transition-duration: 1s;
+}
+
+.container.pushed {
+  left: -10vw; /* 212 / 1920 */
 }
 
 .blue-stripe {
@@ -174,3 +184,31 @@ nav a.selected {
   padding: 0 3vw;
   background-color: #3F00FF;
 }
+
+/* PANEL */
+article {
+  position: absolute;
+  width: 56vw; /* 1232 / 1920 */
+  top: 15vh; /* 118 / 1040 */
+  right: -65vw; /* 37 / 1920 */
+  background-color: #fff;
+  color: #444;
+  overflow-y: scroll;
+  z-index: 2;
+  padding: 5vh 4vw;
+  border-radius: 7px;
+  transition-property: right;
+  transition-duration: 1s;
+}
+
+article.pushed {
+  right: 2vw;
+}
+
+article h2 {
+  color: #444;
+  font-weight: 100;
+  text-transform: none;
+}
+
+/* 64 / 1920 */

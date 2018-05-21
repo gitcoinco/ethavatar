@@ -87,7 +87,12 @@ class App extends Component {
   }
 
   handleNavigation = (selectedIndex) => (evt) => {
-    this.setState({selectedIndex});
+    if (this.state.selectedIndex === selectedIndex) {
+      this.setState({selectedIndex: null});
+    }
+    else {
+      this.setState({selectedIndex});
+    }
     evt.preventDefault();
     return false;
   }
