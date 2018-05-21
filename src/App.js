@@ -123,8 +123,12 @@ class App extends Component {
           selectedIndex={this.state.selectedIndex}
           handleNavigation={this.handleNavigation}
         >
-          <h2>MetaMask seems to be locked.</h2>
-          <p>Unlock MetaMask needs to be unlocked to continue.</p>
+          <h2>No Connection To The Ethereum Network</h2>
+          <p>
+            Browse this website with:<br />
+            Metamask   /   Parity   /    Mist<br />
+            <a href="#" onClick={this.handleNavigation(3)}>Need Help ?</a>
+          </p>
         </Container>
       );
     }
