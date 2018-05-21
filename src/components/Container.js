@@ -7,12 +7,16 @@ import Header from './Header.js';
 export default ({
   isBlurred = false,
   isCentered = false,
-  selectedIndex = 0,
+  selectedIndex = null,
+  handleNavigation,
   children
 }) => (
   <div className="App">
     <Background isBlurred={isBlurred}>
-      <Header selectedIndex={selectedIndex} />
+      <Header
+        selectedIndex={selectedIndex}
+        handleNavigation={handleNavigation}
+      />
     </Background>
     <main className={classnames({
       container: true,

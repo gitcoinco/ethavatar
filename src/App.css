@@ -42,6 +42,7 @@ h4 {
   color: #444;
   margin: 0;
   font-weight: 100;
+  text-transform: uppercase;
 }
 
 p {
@@ -93,11 +94,14 @@ code {
 
 .made-with-gitcoin {
   position: absolute;
-  z-index: 2;
-  max-width: 20vw;
-  height: auto;
   right: 25vw;
   bottom: 10vh;
+  z-index: 2;
+}
+
+.made-with-gitcoin img {
+  max-width: 20vw;
+  height: auto;
 }
 
 /* TEXT */
@@ -124,15 +128,27 @@ nav {
   justify-content: flex-end;
 }
 
-nav div {
+nav a {
+  box-sizing: border-box;
   cursor: pointer;
+  color: #fff;
   font-size: 26px;
-  text-transform: uppercase;
   font-weight: 400;
-  margin: 24px 24px 0;
+  text-transform: uppercase;
+  text-decoration: none;
+  margin: 24px 24px 14px;
+  padding: 0;
 }
 
-nav div.selected {
+nav a:hover, nav a:focus, nav a:active {
+  color: #0FCE7C;
+}
+
+nav a:visited {
+  color: #fff;
+}
+
+nav a.selected {
   color: #0FCE7C;
   border-bottom: 4px solid #0FCE7C;
 }

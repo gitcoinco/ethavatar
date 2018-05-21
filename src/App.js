@@ -20,7 +20,8 @@ class App extends Component {
       web3: undefined,
       ethAddress: undefined,
       ethAvatarInstance: undefined,
-      ethAvatarIPFSHash: undefined
+      ethAvatarIPFSHash: undefined,
+      selectedIndex: undefined,
     };
   }
 
@@ -85,11 +86,22 @@ class App extends Component {
     });
   }
 
+  handleNavigation = (selectedIndex) => (evt) => {
+    this.setState({selectedIndex});
+    evt.preventDefault();
+    return false;
+  }
+
   render() {
     if(this.state.web3 === null) {
       return(
         // Display a web3 warning.
-        <Container isBlurred={true} isCentered={true}>
+        <Container
+          isBlurred={true}
+          isCentered={true}
+          selectedIndex={this.state.selectedIndex}
+          handleNavigation={this.handleNavigation}
+        >
           <h2>No Connection To The Ethereum Network</h2>
           <p>Browse this website with:</p>
           <p>MetaMask / Parity / Mist</p>
@@ -101,7 +113,12 @@ class App extends Component {
     if(this.state.ethAddress === null) {
       return(
         // Display a web3 warning.
-        <Container isBlurred={true} isCentered={true}>
+        <Container
+          isBlurred={true}
+          isCentered={true}
+          selectedIndex={this.state.selectedIndex}
+          handleNavigation={this.handleNavigation}
+        >
           <h2>MetaMask seems to be locked.</h2>
           <p>Unlock MetaMask needs to be unlocked to continue.</p>
         </Container>
@@ -110,7 +127,12 @@ class App extends Component {
 
     if(this.state.ethAvatarIPFSHash !== undefined) {
       return (
-        <Container>
+        <Container
+          isBlurred={false}
+          isCentered={false}
+          selectedIndex={this.state.selectedIndex}
+          handleNavigation={this.handleNavigation}
+        >
           <h4>Your ETH Address:</h4>
           <h3>{this.state.ethAddress}</h3>
           <div className="blue-stripe">
@@ -123,7 +145,12 @@ class App extends Component {
 
     return(
       // Display a loading indicator.
-      <Container isCentered={true}>
+      <Container
+        isBlurred={false}
+        isCentered={true}
+        selectedIndex={this.state.selectedIndex}
+        handleNavigation={this.handleNavigation}
+      >
         <h2>Loading EthAvatar...</h2>
       </Container>
     );

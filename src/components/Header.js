@@ -3,9 +3,12 @@ import React from 'react';
 import Logo from './Logo.js';
 import Nav from './Nav.js';
 
-export default () => (
+export default ({ selectedIndex, handleNavigation }) => (
   <header>
-    <Logo />
-    <Nav selectedIndex={0} />
+    <Logo handleNavigation={handleNavigation} />
+    <Nav
+      selectedIndex={selectedIndex}
+      handleNavigation={handleNavigation}
+    />
   </header>
 );

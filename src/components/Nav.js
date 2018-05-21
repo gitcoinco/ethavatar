@@ -8,15 +8,20 @@ const menuItems = [
   'Help',
 ]
 
-export default ({ selectedIndex }) => (
+export default ({ selectedIndex, handleNavigation }) => (
   <nav>
     {menuItems.map((item, i) => (
-      <div key={`nav-${item.toLowerCase()}`} className={classnames({
-        uppercase: true,
-        selected: selectedIndex === i,
-      })}>
+      <a
+        key={`nav-${item.toLowerCase()}`}
+        href="#"
+        onClick={handleNavigation(i)}
+        className={classnames({
+          uppercase: true,
+          selected: selectedIndex === i,
+        })}
+      >
         {item}
-      </div>
+      </a>
     ))}
   </nav>
 );
