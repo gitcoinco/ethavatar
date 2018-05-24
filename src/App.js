@@ -21,6 +21,7 @@ class App extends Component {
       ethAvatarInstance: undefined,
       ethAvatarIPFSHash: undefined,
       selectedIndex: undefined,
+      menuPushed: false,
     };
   }
 
@@ -87,13 +88,17 @@ class App extends Component {
 
   handleNavigation = (selectedIndex) => (evt) => {
     if (this.state.selectedIndex === selectedIndex) {
-      this.setState({selectedIndex: null});
+      this.setState({selectedIndex: null, menuPushed: false});
     }
     else {
-      this.setState({selectedIndex});
+      this.setState({selectedIndex, menuPushed: false});
     }
     evt.preventDefault();
     return false;
+  }
+
+  toggleMenuPushed = () => {
+    this.setState({menuPushed: !this.state.menuPushed, selectedIndex: null})
   }
 
   render() {
@@ -105,6 +110,8 @@ class App extends Component {
           isCentered={true}
           selectedIndex={this.state.selectedIndex}
           handleNavigation={this.handleNavigation}
+          menuPushed={this.state.menuPushed}
+          toggleMenuPushed={this.toggleMenuPushed}
         >
           <h2>No Connection To The Ethereum Network</h2>
           <p>Browse this website with:</p>
@@ -124,6 +131,8 @@ class App extends Component {
           isCentered={true}
           selectedIndex={this.state.selectedIndex}
           handleNavigation={this.handleNavigation}
+          menuPushed={this.state.menuPushed}
+          toggleMenuPushed={this.toggleMenuPushed}
         >
           <h2>No Connection To The Ethereum Network</h2>
           <p>Browse this website with:</p>
@@ -142,6 +151,8 @@ class App extends Component {
           isCentered={false}
           selectedIndex={this.state.selectedIndex}
           handleNavigation={this.handleNavigation}
+          menuPushed={this.state.menuPushed}
+          toggleMenuPushed={this.toggleMenuPushed}
         >
           <h4>Your ETH Address:</h4>
           <h3>{this.state.ethAddress}</h3>
@@ -161,6 +172,8 @@ class App extends Component {
         isCentered={true}
         selectedIndex={this.state.selectedIndex}
         handleNavigation={this.handleNavigation}
+        menuPushed={this.state.menuPushed}
+        toggleMenuPushed={this.toggleMenuPushed}
       >
         <h2>Loading EthAvatar...</h2>
       </Container>

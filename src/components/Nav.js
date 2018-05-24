@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classnames from 'classnames';
 
 const menuItems = [
@@ -8,8 +8,15 @@ const menuItems = [
   'Help',
 ]
 
-export default ({ selectedIndex, handleNavigation }) => (
-  <nav>
+export default ({ selectedIndex, handleNavigation, toggleMenuPushed, menuPushed }) => (
+  <nav className={classnames({
+    pushed: menuPushed,
+  })}>
+    <div className="menu" onClick={toggleMenuPushed}>
+      <div className="bar" />
+      <div className="bar" />
+      <div className="bar" />
+    </div>
     {menuItems.map((item, i) => (
       <a
         key={`nav-${item.toLowerCase()}`}
@@ -24,4 +31,4 @@ export default ({ selectedIndex, handleNavigation }) => (
       </a>
     ))}
   </nav>
-);
+)

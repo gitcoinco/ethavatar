@@ -1,11 +1,15 @@
 /* PAGE */
 
-html {
+html, body {
   background-color: #1132B9;
+  overflow: hidden;
 }
 
 body {
   padding: 32px 64px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
 }
 
 body {
@@ -96,8 +100,7 @@ button, input[type="submit"] {
   background: url('/images/bg.png') no-repeat;
   background-size: cover;
   filter: blur(0px);
-  transition-property: filter;
-  transition-duration: 2s;
+  transition: filter 2s;
 }
 
 .blurred {
@@ -175,6 +178,27 @@ nav a.selected {
   border-bottom: 4px solid #0FCE7C;
 }
 
+.menu {
+  display: none;
+  position: fixed;
+  top: 4px;
+  right: 8px;
+  width: 30px;
+  padding: 4vw;
+}
+
+.menu .bar {
+  width: 100%;
+  height: 3px;
+  margin: 8px 0;
+  background-color: #fff;
+  border-radius: 1.5px;
+}
+
+.menu .bar:first-child {
+  margin: 0;
+}
+
 /* CONTAINER */
 
 .container {
@@ -187,11 +211,9 @@ nav a.selected {
   width: 40vw; /* 788 / (103 + 788 + 1029) */
   left: 5vw; /* 103 / (103 + 788 + 1020) */
   top: 32vh; /* 330 / (535 + 330 + 175) */
-  bottom: 15vh; /* 175 / (535 + 330 + 175) */
   padding: 3vw; /* 73 / 1920 */
   border-radius: 7px;
-  transition-property: left;
-  transition-duration: 1s;
+  transition: left 1s;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
 }
 
@@ -213,8 +235,7 @@ article {
   padding: 5vh 4vw;
   margin-bottom: 5vh;
   border-radius: 7px;
-  transition-property: right;
-  transition-duration: 1s;
+  transition: right 1s;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
 }
 
@@ -248,8 +269,7 @@ article h2 {
 .accordion .contents {
   overflow: hidden;
   height: auto;
-  transition-property: height;
-  transition-duration: 1s;
+  transition: height 0.5s;
 }
 
 /* ABOUT */
@@ -355,4 +375,71 @@ article h2 {
 .identicon {
   width: 32vh !important;
   height: 32vh !important;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+  .logo {
+    width: 40vw;
+    height: auto;
+  }
+
+  .container {
+    width: 90vw;
+  }
+
+  .container h3 {
+    font-size: 1.8vh;
+  }
+
+  .container.pushed {
+    left: -100vw;
+  }
+
+  .identicon, .avatar-image-cropper, .form-messages {
+    width: 32vw !important;
+    height: 32vw !important;
+  }
+
+  nav {
+    position: absolute;
+    transition: right 0.5s;
+    width: 50vw;
+    right: -50vw;
+  }
+
+  nav.pushed {
+    right: 0;
+  }
+
+  .menu {
+    display: block;
+  }
+
+  .avatar-image-cropper avatar-image {
+    height: auto !important;
+  }
+
+  .avatar-image-cropper p {
+    display: none;
+  }
+
+  article {
+    width: 80vw;
+    top: 13vh;
+    right: -90vw;
+    padding: 4vw;
+    text-align: center;
+  }
+
+  article.pushed {
+    left: 5vw;
+    right: auto;
+  }
+
+  .about-section {
+    flex-direction: column;
+    align-items: center;
+  }
 }

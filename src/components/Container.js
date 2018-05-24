@@ -11,19 +11,23 @@ export default ({
   isCentered = false,
   selectedIndex = null,
   handleNavigation,
+  menuPushed,
+  toggleMenuPushed,
   children,
 }) => (
   <div className="App">
-    <Background isBlurred={isBlurred}>
+    <Background isBlurred={isBlurred} menuPushed={menuPushed}>
       <Header
         selectedIndex={selectedIndex}
         handleNavigation={handleNavigation}
+        menuPushed={menuPushed}
+        toggleMenuPushed={toggleMenuPushed}
       />
     </Background>
     <main className={classnames({
       container: true,
       centered: isCentered,
-      pushed: isPresent(selectedIndex),
+      pushed: isPresent(selectedIndex) || menuPushed,
     })}>
       {children}
     </main>
