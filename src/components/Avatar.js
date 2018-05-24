@@ -264,7 +264,7 @@ class Avatar extends Component {
         return (
           <div className="gray-stripe">
             <div className="dashed-box">
-              <ReactLoading type="bubbles" color="#25e899" width="100" height="100" />
+              <ReactLoading type="bubbles" color="#25e899" width={100} height={100} />
             </div>
             <div className="form-messages">
               <h4>Please wait.</h4>
