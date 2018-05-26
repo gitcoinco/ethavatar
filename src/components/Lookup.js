@@ -55,7 +55,7 @@ class Lookup extends Component {
       <div className="avatar-lookup">
         <h4>Find Avatar for Any ETH Address:</h4>
         <div className="lookup-form">
-          <input type="text" name="address" value={this.state.address} onChange={this.handleInputChange} />
+          <input type="text" name="address" value={this.state.address} onChange={this.handleInputChange} placeholder="Enter any Ethereum Address" />
           <button onClick={this.handleLookup}>Lookup</button>
         </div>
         {this.state.isLoading ? <ReactLoading type="bubbles" color="#25e899" width={100} height={30} /> :

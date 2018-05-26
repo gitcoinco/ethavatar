@@ -393,6 +393,9 @@ article h2 {
   color: #9b9b9b;
   text-align: center;
   flex-grow: 1;
+  padding: 10px;
+  box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
+  border: 1px solid #a8a8a8;
 }
 
 .avatar-lookup .lookup-result {
@@ -456,6 +459,18 @@ article h2 {
     display: none;
   }
 
+  .avatar-lookup .lookup-form {
+    flex-direction: column;
+  }
+
+  .avatar-lookup .lookup-form input {
+    border-bottom: none;
+  }
+
+  .avatar-lookup .lookup-result .right {
+    display: none;
+  }
+
   article {
     width: 80vw;
     top: 13vh;
@@ -510,5 +525,11 @@ article h2 {
 
   .made-with-gitcoin img {
     max-width: 50vw;
+  }
+}
+
+@media (min-width: 800px) {
+  .avatar-lookup .lookup-form input {
+    border-right: none;
   }
 }
