@@ -13,6 +13,7 @@ export default ({
   handleNavigation,
   menuPushed,
   toggleMenuPushed,
+  ethAvatarInstance,
   children,
 }) => (
   <div className="App">
@@ -34,7 +35,7 @@ export default ({
     <article className={classnames({
       pushed: isPresent(selectedIndex),
     })}>
-      {selectPanel(handleNavigation, selectedIndex)}
+      {selectPanel(handleNavigation, selectedIndex, ethAvatarInstance)}
     </article>
   </div>
 );

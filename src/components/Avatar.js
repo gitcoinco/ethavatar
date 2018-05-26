@@ -234,7 +234,7 @@ class Avatar extends Component {
       return (
         <div className="blue-stripe">
           Loading image from IPFS...
-          <ReactLoading type="bubbles" color="#25e899" width="100" height="30" />
+          <ReactLoading type="bubbles" color="#25e899" width={100} height={30} />
         </div>
       );
     }

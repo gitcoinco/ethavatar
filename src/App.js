@@ -102,8 +102,8 @@ class App extends Component {
   }
 
   render() {
-    if(this.state.web3 === null) {
-      return(
+    if (this.state.web3 === null || this.state.ethAddress === null) {
+      return (
         // Display a web3 warning.
         <Container
           isBlurred={true}
@@ -123,28 +123,7 @@ class App extends Component {
       );
     }
 
-    if(this.state.ethAddress === null) {
-      return(
-        // Display a web3 warning.
-        <Container
-          isBlurred={true}
-          isCentered={true}
-          selectedIndex={this.state.selectedIndex}
-          handleNavigation={this.handleNavigation}
-          menuPushed={this.state.menuPushed}
-          toggleMenuPushed={this.toggleMenuPushed}
-        >
-          <h2>No Connection To The Ethereum Network</h2>
-          <p>Browse this website with:</p>
-          <p>MetaMask / Parity / Mist</p>
-          <p>
-            <a href="#" onClick={this.handleNavigation(3)}>Need Help ?</a>
-          </p>
-        </Container>
-      );
-    }
-
-    if(this.state.ethAvatarIPFSHash !== undefined) {
+    if (this.state.ethAvatarIPFSHash !== undefined) {
       return (
         <Container
           isBlurred={false}
@@ -153,6 +132,7 @@ class App extends Component {
           handleNavigation={this.handleNavigation}
           menuPushed={this.state.menuPushed}
           toggleMenuPushed={this.toggleMenuPushed}
+          ethAvatarInstance={this.state.ethAvatarInstance}
         >
           <h4>Your ETH Address:</h4>
           <h3>{this.state.ethAddress}</h3>
@@ -165,7 +145,7 @@ class App extends Component {
       );
     }
 
-    return(
+    return (
       // Display a loading indicator.
       <Container
         isBlurred={false}

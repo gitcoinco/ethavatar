@@ -2,13 +2,18 @@ import React from 'react';
 
 import Dapp from './Dapp.js';
 import Accordion from './Accordion.js';
+import Lookup from './Lookup.js';
 import { isPresent } from '../utils/lib.js';
 
 let lastSelectedIndex;
 
-const panels = (handleNavigation) => [
+const panels = (handleNavigation, ethAvatarInstance) => [
   <div>
-    Avatar Lookup
+    <header>
+      <h4>Avatar Lookup</h4>
+      <h4 className="pointer" onClick={handleNavigation()}>Back</h4>
+    </header>
+    <Lookup ethAvatarInstance={ethAvatarInstance} />
   </div>,
   <div>
     <header>
@@ -79,7 +84,7 @@ const panels = (handleNavigation) => [
   </div>,
 ];
 
-export const selectPanel = (handleNavigation, selectedIndex) => {
+export const selectPanel = (handleNavigation, selectedIndex, ethAvatarInstance) => {
   lastSelectedIndex = isPresent(selectedIndex) ? selectedIndex : lastSelectedIndex;
-  return panels(handleNavigation)[lastSelectedIndex];
+  return panels(handleNavigation, ethAvatarInstance)[lastSelectedIndex];
 };
