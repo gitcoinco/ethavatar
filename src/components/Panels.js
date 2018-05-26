@@ -53,7 +53,16 @@ const panels = (handleNavigation, ethAvatarInstance) => [
     </div>
   </div>,
   <div>
-    Use It In Your DApp
+    <header>
+      <h4>Use It In Your DApp</h4>
+      <h4 className="pointer" onClick={handleNavigation()}>Back</h4>
+    </header>
+    <div>
+      For more information on using this in your DApp, please see our GitHub:<br />
+      <a href="https://github.com/gitcoinco/ethavatar#to-integrate-into-your-app" target="_blank">
+        EthAvatar GitHub
+      </a>
+    </div>
   </div>,
   <div>
     <header>
@@ -78,7 +87,12 @@ const panels = (handleNavigation, ethAvatarInstance) => [
       </Accordion>
       <h2>For DApp Developers</h2>
       <Accordion title="How do I use ETH Avatar in my DApp?">
-        <p>Good question! TODO - Lorem ipsum goes here</p>
+        <p>
+          For more information on using this in your DApp, please see our GitHub:<br />
+          <a href="https://github.com/gitcoinco/ethavatar#to-integrate-into-your-app" target="_blank">
+            EthAvatar GitHub
+          </a>
+        </p>
       </Accordion>
     </div>
   </div>,
