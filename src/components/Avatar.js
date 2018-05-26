@@ -219,12 +219,12 @@ class Avatar extends Component {
       size = 200; // default to 200px if no size is provided
     }
 
-    if (this.props.ipfsHash) {
+    if (this.props.ipfsHash && !this.state.isChanging) {
       if (this.state.imageURL) {
         return (
           <div className="blue-stripe">
-            <img src={this.state.imageURL} style={{ width: size, height: size, border: '1px solid black' }} role="presentation" />
-            {this.state.title ? (<p>Title: {this.state.title}</p>):(<p></p>)}
+            <img src={this.state.imageURL} role="presentation" />
+            <button onClick={this.handleChangeButton}>Change</button>
           </div>
         );
       }
@@ -289,6 +289,13 @@ class Avatar extends Component {
           </div>
         );
       }
+
+      return (
+        <div className="blue-stripe">
+          <img src={this.state.imageURL} role="presentation" />
+          <button onClick={this.handleChangeButton}>Change</button>
+        </div>
+      );
     }
 
     return (
