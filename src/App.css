@@ -58,10 +58,6 @@ a {
   font-size: 3vh;
 }
 
-span.h1-5 {
-  font-size: 5vh;
-}
-
 code {
   display: block;
   font-family: 'menlo';
@@ -100,7 +96,7 @@ button, input[type="submit"] {
   background: url('/images/bg.png') no-repeat;
   background-size: cover;
   filter: blur(0px);
-  transition: filter 2s;
+  transition: filter 1s;
 }
 
 .blurred {
@@ -109,9 +105,9 @@ button, input[type="submit"] {
 
 .circle {
   position: fixed;
-  top: 120px;
-  max-width: 70vh;
-  height: auto;
+  top: 25vh;
+  max-height: 60vh;
+  width: auto;
 }
 
 .made-with-gitcoin {
@@ -150,7 +146,6 @@ header {
 nav {
   display: flex;
   flex-flow: row wrap;
-  justify-content: flex-end;
 }
 
 nav a {
@@ -213,7 +208,7 @@ nav a.selected {
   top: 32vh; /* 330 / (535 + 330 + 175) */
   padding: 3vw; /* 73 / 1920 */
   border-radius: 7px;
-  transition: left 1s;
+  transition: left 0.3s;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
 }
 
@@ -225,7 +220,7 @@ nav a.selected {
 
 article {
   position: absolute;
-  width: 56vw; /* 1232 / 1920 */
+  width: 55vw; /* 1232 / 1920 */
   top: 15vh; /* 118 / 1040 */
   right: -65vw; /* 37 / 1920 */
   background-color: #fff;
@@ -235,12 +230,12 @@ article {
   padding: 5vh 4vw;
   margin-bottom: 5vh;
   border-radius: 7px;
-  transition: right 1s;
+  transition: right 0.3s;
   box-shadow: 0 0 2px 0 rgba(0,0,0,0.12), 0 2px 2px 0 rgba(0,0,0,0.24);
 }
 
 article.pushed {
-  right: 2vw;
+  right: 10vw;
 }
 
 article h2 {
@@ -269,7 +264,7 @@ article h2 {
 .accordion .contents {
   overflow: hidden;
   height: auto;
-  transition: height 0.5s;
+  transition: height 0.3s;
 }
 
 /* ABOUT */
@@ -404,7 +399,7 @@ article h2 {
 
   nav {
     position: absolute;
-    transition: right 0.5s;
+    transition: right 0.3s;
     width: 50vw;
     right: -50vw;
   }
@@ -441,5 +436,43 @@ article h2 {
   .about-section {
     flex-direction: column;
     align-items: center;
+  }
+
+  .bg h1 {
+    font-size: 3vh;
+    left: 0;
+    top: 13vh;
+    width: auto;
+    bottom: auto;
+    text-align: center;
+    transition: left 0.3s;
+  }
+
+  .bg h1.pushed {
+    left: -200vw;
+  }
+
+  .circle {
+    max-height: 40vh;
+    transform: rotateZ(-10deg);
+    left: 0;
+    transition: left 0.3s;
+  }
+
+  .circle.pushed {
+    left: -40vh;
+  }
+
+  .made-with-gitcoin {
+    background-color: #373737;
+    right: 72px;
+    left: 72px;
+    bottom: 42px;
+    text-align: center;
+    padding: 2vh 0;
+  }
+
+  .made-with-gitcoin img {
+    max-width: 50vw;
   }
 }
