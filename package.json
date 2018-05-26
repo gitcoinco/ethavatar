@@ -56,7 +56,7 @@
     "react-avatar-image-cropper": "^1.1.7",
     "react-blockies": "^1.2.2",
     "react-dom": "^15.4.2",
-    "react-loading": "^1.0.3",
+    "react-loading": "^2.0.2",
     "truffle-hdwallet-provider": "0.0.3"
   },
   "scripts": {
