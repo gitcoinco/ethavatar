@@ -50,6 +50,27 @@ class Lookup extends Component {
     }
   }
 
+  renderAvatar() {
+    if (this.state.isLoading) {
+      return <ReactLoading type="bubbles" color="#25e899" width={100} height={30} />
+    } else if (this.state.imageURL) {
+      return (
+        <div className="lookup-result">
+          <div className="left">
+            <img src={this.state.imageURL} role="presentation" />
+          </div>
+          <div className="right">
+            <h4>Search Result For:</h4>
+            <h4>{this.state.address}</h4>
+            <a href={`https://etherscan.io/address/${this.state.address}`} target="_blank">View On Etherscan</a>
+          </div>
+        </div>
+      )
+    } else if (this.state.address) {
+      return <Blockies seed={this.state.address} scale={25} />
+    }
+  }
+
   render() {
     return (
       <div className="avatar-lookup">
@@ -58,20 +79,7 @@ class Lookup extends Component {
           <input type="text" name="address" value={this.state.address} onChange={this.handleInputChange} placeholder="Enter any Ethereum Address" />
           <button onClick={this.handleLookup}>Lookup</button>
         </div>
-        {this.state.isLoading ? <ReactLoading type="bubbles" color="#25e899" width={100} height={30} /> :
-          this.state.imageURL && (
-            <div className="lookup-result">
-              <div className="left">
-                <img src={this.state.imageURL} role="presentation" />
-              </div>
-              <div className="right">
-                <h4>Search Result For:</h4>
-                <h4>{this.state.address}</h4>
-                <a href={`https://etherscan.io/address/${this.state.address}`} target="_blank">View On Etherscan</a>
-              </div>
-            </div>
-          )
-        }
+        {this.renderAvatar()}
       </div>
     )
   }

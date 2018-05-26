@@ -431,7 +431,7 @@ article h2 {
     left: -100vw;
   }
 
-  .identicon, .avatar-image-cropper, .form-messages {
+  .identicon, .avatar-image-cropper, .form-messages, .avatar-image {
     width: 32vw !important;
     height: 32vw !important;
   }

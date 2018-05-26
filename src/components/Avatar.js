@@ -223,7 +223,7 @@ class Avatar extends Component {
       if (this.state.imageURL) {
         return (
           <div className="blue-stripe">
-            <img src={this.state.imageURL} role="presentation" />
+            <img className="avatar-image" src={this.state.imageURL} role="presentation" />
             <button onClick={this.handleChangeButton}>Change</button>
           </div>
         );
@@ -247,7 +247,7 @@ class Avatar extends Component {
         return (
           <div className="blue-stripe">
             {this.state.selectedImageURL ?
-              <img src={this.state.selectedImageURL} role="presentation" />
+              <img className="avatar-image" src={this.state.selectedImageURL} role="presentation" />
             :
               <div className="avatar-image-cropper">
                 <AvatarImageCropper apply={this.handleApplyCropper} text="Drag Here" icon={<img src="/images/upload.png" width="149" height="127" alt="Drag Here" />} />
@@ -292,7 +292,7 @@ class Avatar extends Component {
 
       return (
         <div className="blue-stripe">
-          <img src={this.state.imageURL} role="presentation" />
+          <img className="avatar-image" src={this.state.imageURL} role="presentation" />
           <button onClick={this.handleChangeButton}>Change</button>
         </div>
       );
