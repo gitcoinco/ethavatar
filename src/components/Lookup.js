@@ -53,8 +53,8 @@ class Lookup extends Component {
   render() {
     return (
       <div className="avatar-lookup">
+        <h4>Find Avatar for Any ETH Address:</h4>
         <div className="lookup-form">
-          <h4>Find Avatar for Any ETH Address:</h4>
           <input type="text" name="address" value={this.state.address} onChange={this.handleInputChange} />
           <button onClick={this.handleLookup}>Lookup</button>
         </div>
@@ -66,7 +66,8 @@ class Lookup extends Component {
               </div>
               <div className="right">
                 <h4>Search Result For:</h4>
-                <p>{this.state.address}</p>
+                <h4>{this.state.address}</h4>
+                <a href={`https://etherscan.io/address/${this.state.address}`} target="_blank">View On Etherscan</a>
               </div>
             </div>
           )

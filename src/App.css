@@ -372,6 +372,42 @@ article h2 {
   height: 32vh !important;
 }
 
+/* LOOKUP FORM */
+
+.avatar-lookup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.avatar-lookup .lookup-form {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  padding: 30px;
+}
+
+.avatar-lookup .lookup-form input {
+  color: #9b9b9b;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.avatar-lookup .lookup-result {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+}
+
+.avatar-lookup .lookup-result .right {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 30px;
+}
+
 /* MOBILE */
 
 @media (max-width: 800px) {
