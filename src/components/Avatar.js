@@ -239,8 +239,6 @@ class Avatar extends Component {
       );
     }
 
-    console.log(this.state.isChanging)
-
     // Form
     if (this.state.isChanging) {
       if (!this.state.uploadStarted) {
