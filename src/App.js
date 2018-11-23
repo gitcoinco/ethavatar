@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import EthAvatarContract from '../build/contracts/EthAvatar.json';
-import getWeb3 from './utils/getWeb3';
 
-import EthAvatarImage from './components/EthAvatarImage.js';
-import EthAvatarForm from './components/EthAvatarForm.js';
+import EthAvatarContract from '../build/contracts/EthAvatar.json';
+import { getWeb3 } from './utils/getWeb3';
+
+import Container from './components/Container.js';
+import Avatar from './components/Avatar.js';
 
 import './css/oswald.css';
 import './css/open-sans.css';
@@ -18,16 +19,18 @@ class App extends Component {
       web3: undefined,
       ethAddress: undefined,
       ethAvatarInstance: undefined,
-      ethAvatarIPFSHash: undefined
+      ethAvatarIPFSHash: undefined,
+      selectedIndex: undefined,
+      menuPushed: false,
     };
   }
 
-  componentWillMount() {
-    // Get network provider and web3 instance.
-    // See utils/getWeb3 for more info.
+  async componentWillMount() {
+    try {
+      // Get network provider and web3 instance.
+      // See utils/getWeb3 for more info.
+      const results = await getWeb3();
 
-    getWeb3
-    .then(results => {
       this.setState({
         web3: results.web3,
         ethAddress: results.web3.eth.coinbase
@@ -35,13 +38,13 @@ class App extends Component {
 
       // Instantiate contract once web3 provided.
       this.instantiateContract();
-    })
-    .catch(() => {
+    }
+    catch (err) {
       this.setState({
         web3: null
       });
-      console.log('Error finding web3.');
-    });
+      console.error('Error finding web3.');
+    }
   }
 
   instantiateContract() {
@@ -50,16 +53,17 @@ class App extends Component {
     ethAvatar.setProvider(this.state.web3.currentProvider);
 
     // Get accounts.
-    this.state.web3.eth.getAccounts((error, accounts) => {
-      ethAvatar.deployed().then((instance) => {
-        var ethAvatarInstance = instance;
+    this.state.web3.eth.getAccounts(async (error, accounts) => {
+      try {
+        const instance = await ethAvatar.deployed();
+        const ethAvatarInstance = instance;
 
         this.setState({
-          ethAvatarInstance: ethAvatarInstance
+          ethAvatarInstance,
         });
 
         // watch the DidSetIPFSHash event
-        var didSetIPFSHashEvent = ethAvatarInstance.DidSetIPFSHash();
+        const didSetIPFSHashEvent = ethAvatarInstance.DidSetIPFSHash();
         didSetIPFSHashEvent.watch((error, result) => {
             if(!error)
             {
@@ -71,65 +75,89 @@ class App extends Component {
         );
 
         // use ethAvatarInstance to retreive the hash of the current account
-        return ethAvatarInstance.getIPFSHash.call(this.state.ethAddress);
-      }).then((result) => {
+        const result = await ethAvatarInstance.getIPFSHash.call(this.state.ethAddress);
+
         // Update state with the result.
-        return this.setState({ ethAvatarIPFSHash: result });
-      });
+        this.setState({ ethAvatarIPFSHash: result });
+      }
+      catch (err) {
+        console.error(err);
+      }
     });
   }
 
+  handleNavigation = (selectedIndex) => (evt) => {
+    if (this.state.selectedIndex === selectedIndex) {
+      this.setState({selectedIndex: null, menuPushed: false});
+    }
+    else {
+      this.setState({selectedIndex, menuPushed: false});
+    }
+    evt.preventDefault();
+    return false;
+  }
+
+  toggleMenuPushed = () => {
+    this.setState({menuPushed: !this.state.menuPushed, selectedIndex: null})
+  }
+
   render() {
-    if(this.state.web3 === null) {
-      return(
-        // Display a web3 warning.
-        <div className="App">
-            <main className="container">
-              <h1>⚠️</h1>
-              <p>This browser has no connection to the Ethereum network. Please use the Chrome/FireFox extension MetaMask, or dedicated Ethereum browsers Mist or Parity.</p>
-            </main>
-        </div>
-      );
-    }
-
-    if(this.state.ethAddress === null) {
-      return(
-        // Display a web3 warning.
-        <div className="App">
-            <main className="container">
-              <h1>⚠️</h1>
-              <p>MetaMask seems to be locked.</p>
-            </main>
-        </div>
-      );
-    }
-
-    if(this.state.ethAvatarIPFSHash !== undefined) {
+    if (this.state.web3 === null || this.state.ethAddress === null) {
       return (
-        <div className="App">
-          <main className="container">
-            <h1>Welcome to Eth Avatar!</h1>
-            <h2>Current Ethereum Address: </h2><h3><code>{this.state.ethAddress}</code></h3>
-            <h2>Associated Avatar: </h2>
-            <EthAvatarImage ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} ipfsHash={this.state.ethAvatarIPFSHash} />
-            <br />
-            <hr />
-            <h1>Upload New Avatar</h1>
-            <EthAvatarForm ethAvatarInstance={this.state.ethAvatarInstance} ethAddress={this.state.ethAddress} />
-          </main>
-        </div>
+        // Display a web3 warning.
+        <Container
+          isBlurred={true}
+          isCentered={true}
+          selectedIndex={this.state.selectedIndex}
+          handleNavigation={this.handleNavigation}
+          menuPushed={this.state.menuPushed}
+          toggleMenuPushed={this.toggleMenuPushed}
+        >
+          <h2>No Connection To The Ethereum Network</h2>
+          <p>Browse this website with:</p>
+          <p>MetaMask / Parity / Mist</p>
+          <p>
+            <a href="#" onClick={this.handleNavigation(3)}>Need Help ?</a>
+          </p>
+        </Container>
       );
     }
 
-    return(
-      // Display a loading indicator.
-      <div className="App">
-        <main className="container">
-          <h1>Loading EthAvatar...</h1>
-        </main>
-      </div>
-    );
+    if (this.state.ethAvatarIPFSHash !== undefined) {
+      return (
+        <Container
+          isBlurred={false}
+          isCentered={false}
+          selectedIndex={this.state.selectedIndex}
+          handleNavigation={this.handleNavigation}
+          menuPushed={this.state.menuPushed}
+          toggleMenuPushed={this.toggleMenuPushed}
+          ethAvatarInstance={this.state.ethAvatarInstance}
+        >
+          <h4>Your ETH Address:</h4>
+          <h3>{this.state.ethAddress}</h3>
+          <Avatar
+            ethAvatarInstance={this.state.ethAvatarInstance}
+            ethAddress={this.state.ethAddress}
+            ipfsHash={this.state.ethAvatarIPFSHash}
+          />
+        </Container>
+      );
+    }
 
+    return (
+      // Display a loading indicator.
+      <Container
+        isBlurred={false}
+        isCentered={true}
+        selectedIndex={this.state.selectedIndex}
+        handleNavigation={this.handleNavigation}
+        menuPushed={this.state.menuPushed}
+        toggleMenuPushed={this.toggleMenuPushed}
+      >
+        <h2>Loading EthAvatar...</h2>
+      </Container>
+    );
   }
 }
 

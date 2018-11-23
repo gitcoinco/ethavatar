@@ -49,13 +49,14 @@
     "whatwg-fetch": "1.0.0"
   },
   "dependencies": {
+    "classnames": "^2.2.5",
     "dotenv": "^2.0.0",
-    "ipfs-api": "^18.1.1",
+    "ipfs-api": "^22.0.0",
     "react": "^15.4.2",
     "react-avatar-image-cropper": "^1.1.7",
     "react-blockies": "^1.2.2",
     "react-dom": "^15.4.2",
-    "react-loading": "^1.0.3",
+    "react-loading": "^2.0.2",
     "truffle-hdwallet-provider": "0.0.3"
   },
   "scripts": {
