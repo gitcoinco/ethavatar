@@ -32,8 +32,8 @@ The avatar image is stored on [IPFS](https://ipfs.io) and is bound to your addre
 // var ipfs = ipfsAPI('ipfs.infura.io', '5001', {protocol: 'https'}); // connect to the unfura IPFS node
 
 // setup
-var eth_avatar_abi = [{"constant": false, "inputs": [], "name": "getIPFSHash", "outputs": [{"name": "", "type": "string"}], "payable": false, "type": "function"}, {"constant": false, "inputs": [{"name": "hash", "type": "string"}], "name": "setIPFSHash", "outputs": [], "payable": false, "type": "function"}, {"anonymous": false, "inputs": [{"indexed": true, "name": "hashAddress", "type": "address"}, {"indexed": false, "name": "hash", "type": "string"}], "name": "DidSetIPFSHash", "type": "event"}]
-var eth_avatar_address = '0x4FbF2f1613Cc86314b22AE10Ae95D19cF2990824'; //mainnet
+var eth_avatar_abi =[{"constant":false,"inputs":[{"name":"hash","type":"string"}],"name":"setIPFSHash","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"hashAddress","type":"address"}],"name":"getIPFSHash","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"hashAddress","type":"address"},{"indexed":false,"name":"hash","type":"string"}],"name":"DidSetIPFSHash","type":"event"}];
+var eth_avatar_address = '0x5d5194e9aa451d36ec4faa62609d18e1ed6765a4'; //mainnet
 var eth_avatar_contract = web3.eth.contract(eth_avatar_abi).at(eth_avatar_address);
 
 // configure inputs
